@@ -7598,8 +7598,15 @@ sub {
 }
 
 .content {
-  background-image: url(../images/new-bg.jpg);
+
   overflow: hidden
+}
+.background {
+  position: fixed;
+  background-image: url(../images/new-bg.jpg);
+  width: 100%;
+  height: 100vh;
+  
 }
 
 /* Стили, имитирующие элегантность оригинала */
