@@ -8,7 +8,7 @@
 
 #rec737275397 .t396__carrier {
   height: 1070px;
-  background-position: center center;
+  background-position: center centner;
   background-attachment: scroll;
   background-size: cover;
   background-repeat: no-repeat;
@@ -4783,7 +4783,7 @@ img:not([src]) {
 }
 @media screen and (min-width: 981px) {
   .t-screenmax-980px {
-    display: none;
+    /* display: none; */
   }
 }
 @media screen and (min-width: 1201px) {
@@ -7510,7 +7510,6 @@ sub {
   }
 }
 
-
 .z-index-max,
 .t-input-group {
   position: relative;
@@ -7530,21 +7529,21 @@ sub {
   color: #000 !important;
 }
 
- .timer-element {
+.timer-element {
   display: inline-block;
   line-height: 1;
   margin: 0 2px;
   vertical-align: top;
   font-size: 24px;
 }
- .timer-number {
+.timer-number {
   display: inline-block;
   font-size: 42px;
   color: #000 !important;
 
   line-height: 1;
 }
- .timer-text {
+.timer-text {
   display: block;
   font-size: 24px;
   color: #000 !important;
@@ -7552,7 +7551,7 @@ sub {
   line-height: 1;
   margin-top: 2px;
 }
- .timer-separator {
+.timer-separator {
   display: inline-block;
   vertical-align: top;
   font-size: 42px;
@@ -7562,7 +7561,6 @@ sub {
   line-height: 1;
 }
 
-
 .timer-wrapper {
   text-align: center;
 }
@@ -7571,7 +7569,7 @@ sub {
   color: #fff !important;
 }
 
-.overlay { 
+.overlay {
   position: absolute;
   display: none;
   justify-content: center;
@@ -7591,10 +7589,130 @@ sub {
   border: 3px solid #fff;
   cursor: pointer;
   text-transform: uppercase;
- }
- .audio {
+}
+.audio {
   width: 1px;
   height: 1px;
   opacity: 0;
   position: absolute;
- }
+}
+
+.content {
+  background-image: url(../images/new-bg.jpg);
+  overflow: hidden
+}
+
+/* Стили, имитирующие элегантность оригинала */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+
+
+
+.timeline-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  /* Имитация вертикальной разделительной линии */
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  padding-left: 40px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px; /* Увеличенный отступ для лучшей читаемости */
+  position: relative;
+  font-size: 23px;
+}
+
+/* Стилизация иконок (SVG) */
+.timeline-item .icon {
+  width: 40px; /* Чуть больше для лучшей видимости */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.timeline-item .icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: #ffffff; /* Белый цвет контура */
+  fill: none;
+  stroke-width: 1.8; /* Немного тоньше для изящности */
+}
+
+/* Заполнение для иконок, где нужно закрашивание (например, сердце) */
+.timeline-item .icon svg path[fill="none"] {
+  fill: none;
+}
+.timeline-item .icon svg path[fill="#ffffff"] {
+  fill: #ffffff;
+  stroke: none; /* Убираем контур у закрашенных элементов */
+}
+
+/* Стилизация текста */
+.timeline-content {
+  display: flex;
+  align-items: center;
+}
+
+.time {
+  margin-right: 25px;
+  font-size: 1.15em;
+  opacity: 0.9;
+}
+
+.event {
+  font-size: 1.15em;
+  text-transform: lowercase;
+}
+
+/* Вертикальный заголовок "ТАЙМИНГ" */
+.vertical-title {
+  position: absolute;
+  right: 45px; /* Сдвигаем вправо от основного блока */
+  top: 0;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 6vw;
+  color: rgba(255, 255, 255, 0.3); /* Более прозрачный, чем оригинал */
+  letter-spacing: 15px;
+  user-select: none;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    padding-left: 10px;
+    border-left: none;
+  }
+
+  .timeline-item {
+    padding-left: 40px; /* Иконка будет выглядеть как маркер */
+    margin-bottom: 25px;
+  }
+
+  .timeline-item .icon {
+    left: 0; /* Сдвигаем иконку к левому краю, чтобы она заменила линию */
+  }
+
+  .vertical-title {
+    display: none;
+  }
+
+  .time,
+  .event {
+    font-size: 1em;
+  }
+
+  .time {
+    margin-right: 15px;
+  }
+}

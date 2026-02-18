@@ -15,7 +15,7 @@ inviteButton.addEventListener('click', () => {
     content.style.display = "block";
 
     // 2. Показываем оверлей (если нужно оставить видимым — оставляем)
-    // overlay.style.display = "flex";   ← если не нужно — закомментируйте или уберите
+    overlay.style.display = "none";   ← если не нужно — закомментируйте или уберите
 
     // 3. Устанавливаем громкость
     audio.volume = 0.45;
