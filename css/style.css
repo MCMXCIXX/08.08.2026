@@ -7589,6 +7589,14 @@ sub {
   border: 3px solid #fff;
   cursor: pointer;
   text-transform: uppercase;
+  border-radius: 35px;
+}
+.overlay__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  text-align: center;
 }
 .audio {
   width: 1px;
@@ -7598,21 +7606,17 @@ sub {
 }
 
 .content {
-
-  overflow: hidden
+  overflow: hidden;
 }
 .background {
   position: fixed;
   background-image: url(../images/new-bg.jpg);
   width: 100%;
   height: 100vh;
-  
 }
 
 /* Стили, имитирующие элегантность оригинала */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
-
-
 
 .timeline-wrapper {
   width: 100%;
@@ -7641,7 +7645,7 @@ sub {
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
+  margin-right: 15px;
 }
 
 .timeline-item .icon svg {
@@ -7675,7 +7679,7 @@ sub {
 
 .event {
   font-size: 1.15em;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
 }
 
 /* Вертикальный заголовок "ТАЙМИНГ" */
@@ -7722,4 +7726,266 @@ sub {
   .time {
     margin-right: 15px;
   }
+}
+
+.overlay {
+  background-image: url(../images/start-bg.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.player-wrapper {
+  position: relative;
+}
+.player {
+  position: absolute;
+  z-index: 9999 !important;
+  bottom: 10px;
+  width: 100%;
+}
+.progressbar {
+  display: flex;
+  position: relative;
+  width: 75%;
+  height: 2px;
+  background-color: #fff;
+  margin: 0 auto;
+}
+.progressbar__inner {
+  z-index: 11;
+  display: flex;
+  position: absolute;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.8;
+}
+
+.player__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 15px;
+}
+.player__fast-forward {
+  display: flex;
+  align-items: center;
+  transform: rotate(180deg);
+  height: 45px;
+}
+.player__play-pause {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-color: #000;
+  cursor: pointer;
+}
+.player__pause-icon {
+  cursor: pointer;
+  display: none;
+}
+.player__play-icon {
+  animation: heartbeat 2s ease infinite;
+}
+.player__fast-back {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 45px;
+}
+
+@keyframes heartbeat {
+  0% {
+    /* Начальный размер */
+    transform: scale(1);
+  }
+  50% {
+    /* Максимальное увеличение */
+    transform: scale(1.2);
+  }
+  100% {
+    /* Максимальное увеличение */
+    transform: scale(1);
+  }
+}
+
+.custon-title {
+  position: relative;
+  max-width: 75%;
+  margin: 0 auto;
+  font-size: 35px;
+  font-family: "NEWFONTS", Arial, sans-serif;
+  margin-bottom: 25px;
+}
+
+
+.custon-title--h2 {
+    position: relative;
+    max-width: 65%;
+    margin: 0 auto;
+    font-size: 30px;
+    font-family: "NEWFONTS", Arial, sans-serif;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+.custon-text {
+      position: relative;
+    max-width: 65%;
+    margin: 0 auto;
+    font-size: 25px;
+    font-family: "NEWFONTS", Arial, sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .custon-title {
+    font-size: 20px;
+  }
+  .custon-title--h2 {
+    font-size: 19px;
+  }
+  .custon-text {
+        font-size: 18px;
+  }
+}
+
+/* --- ОБЩИЙ ФОН (Имитация атласа) --- */
+.outer-background {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Текст "Девушки" (Оставлен, но стилизован под пример) */
+.sidebar-text {
+    font-family: "NEWFONTS", Arial, sans-serif;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 88px;
+    color: #333;
+    text-orientation: upright;
+    opacity: 0.8;
+    user-select: none;
+    font-weight: 400;
+
+}
+
+
+/* --- СЛАЙДЕР --- */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Ограничение ширины основного блока */
+    overflow: hidden; /* Важно: скрывает лишние слайды */
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Трек, в котором двигаются слайды */
+.slider-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out; /* Плавный переход */
+    width: 300%; /* 3 слайда * 100% */
+}
+
+/* Каждый слайд */
+.slide {
+    flex: 0 0 100%; /* Каждый слайд занимает 100% ширины wrapper'а */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 750px;
+    max-width: 500px;
+    height: auto;
+    display: block;
+}
+
+/* --- Кнопки навигации --- */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный белый фон */
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    color: #333;
+    font-size: 20px;
+    width: 55px;
+    height: 55px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s;
+}
+
+.slider-nav:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* --- Точки индикации --- */
+.slider-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.6); /* Неактивная точка */
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #333;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background-color: #333; /* Активная точка */
+    transform: scale(1.2);
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 768px) {
+    .sidebar-text {
+        font-size: 50px;
+        left: 2%;
+    }
+    .slider-wrapper {
+        max-width: 90vw;
+    }
+    .slider-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
 }
