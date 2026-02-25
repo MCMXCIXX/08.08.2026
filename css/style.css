@@ -7820,6 +7820,7 @@ sub {
   font-size: 35px;
   font-family: "NEWFONTS", Arial, sans-serif;
   margin-bottom: 25px;
+  font-weight: 500;
 }
 
 
@@ -7831,6 +7832,7 @@ sub {
     font-family: "NEWFONTS", Arial, sans-serif;
     margin-bottom: 10px;
     margin-top: 25px;
+      font-weight: 500;
 }
 .custon-text {
       position: relative;
@@ -7838,8 +7840,8 @@ sub {
     margin: 0 auto;
     font-size: 25px;
     font-family: "NEWFONTS", Arial, sans-serif;
-    font-weight: 600;
     margin-bottom: 10px;
+      font-weight: 500;
 }
 
 @media (max-width: 768px) {
@@ -7860,7 +7862,7 @@ sub {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding: 20px;
 }
 
@@ -7885,7 +7887,7 @@ sub {
 .slider-wrapper {
     position: relative;
     width: 100%;
-    max-width: 500px; /* Ограничение ширины основного блока */
+    max-width: 400px; /* Ограничение ширины основного блока */
     overflow: hidden; /* Важно: скрывает лишние слайды */
     border-radius: 8px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -7908,8 +7910,8 @@ sub {
 .slide img {
     width: 100%;
     object-fit: cover;
-    max-height: 750px;
-    max-width: 500px;
+    max-height: 578px;
+    max-width: 400px;
     height: auto;
     display: block;
 }
@@ -7922,7 +7924,7 @@ sub {
     background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный белый фон */
     border: 1px solid #ddd;
     border-radius: 50%;
-    color: #333;
+    color: #000 !important;
     font-size: 20px;
     width: 55px;
     height: 55px;

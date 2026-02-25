@@ -43,80 +43,77 @@ audio.addEventListener('timeupdate', ()=>{
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('sliderTrack');
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('sliderDots');
-
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-
-    // --- 1. Генерация точек навигации ---
-    function createDots() {
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.dataset.index = i;
-            dot.addEventListener('click', () => moveToSlide(i));
-            dotsContainer.appendChild(dot);
+    class Slider {
+        constructor(sliderId) {
+            this.slider = document.getElementById(sliderId);
+            this.track = this.slider.querySelector('.slider-track');
+            this.slides = this.slider.querySelectorAll('.slide');
+            this.prevBtn = this.slider.querySelector('.prev');
+            this.nextBtn = this.slider.querySelector('.next');
+            this.dotsContainer = this.slider.querySelector('.slider-dots');
+            
+            this.currentIndex = 0;
+            this.totalSlides = this.slides.length;
+            
+            this.init();
         }
-        updateDots();
-    }
-
-    // --- 2. Функция для обновления позиции трека и точек ---
-    function updateSlider() {
-        // Вычисляем смещение: (индекс * 100%)
-        const offset = -currentIndex * 100;
-        track.style.transform = `translateX(${offset}%)`;
-        updateDots();
-    }
-    
-    function updateDots() {
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            dot.classList.remove('active');
-            if (index === currentIndex) {
-                dot.classList.add('active');
+        
+        init() {
+            this.createDots();
+            this.updateSlider();
+            this.addEventListeners();
+        }
+        
+        createDots() {
+            for (let i = 0; i < this.totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.dataset.index = i;
+                dot.addEventListener('click', () => this.moveToSlide(i));
+                this.dotsContainer.appendChild(dot);
             }
-        });
-    }
-
-    // --- 3. Функции переключения ---
-    function moveToSlide(index) {
-        if (index >= 0 && index < totalSlides) {
-            currentIndex = index;
-            updateSlider();
+        }
+        
+        updateSlider() {
+            const offset = -this.currentIndex * 100;
+            this.track.style.transform = `translateX(${offset}%)`;
+            this.updateDots();
+        }
+        
+        updateDots() {
+            const dots = this.dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === this.currentIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+        moveToSlide(index) {
+            if (index >= 0 && index < this.totalSlides) {
+                this.currentIndex = index;
+                this.updateSlider();
+            }
+        }
+        
+        nextSlide() {
+            const newIndex = (this.currentIndex + 1) % this.totalSlides;
+            this.moveToSlide(newIndex);
+        }
+        
+        prevSlide() {
+            const newIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+            this.moveToSlide(newIndex);
+        }
+        
+        addEventListeners() {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+            this.prevBtn.addEventListener('click', () => this.prevSlide());
         }
     }
-
-    function nextSlide() {
-        const newIndex = (currentIndex + 1) % totalSlides;
-        moveToSlide(newIndex);
-    }
-
-    function prevSlide() {
-        // Для кнопки "Назад" нужно корректно обработать переход с 0 на последний слайд
-        const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        moveToSlide(newIndex);
-    }
-
-    // --- 4. Назначение обработчиков событий ---
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-
-    // --- Инициализация ---
-    createDots();
-    updateSlider();
     
-    // (Опционально) Автопроигрывание, если нужно
-    /*
-    let autoSlideInterval = setInterval(nextSlide, 5000); 
-    // Очистка интервала при наведении на слайдер, чтобы не переключался во время просмотра
-    const wrapper = document.querySelector('.slider-wrapper');
-    wrapper.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-    wrapper.addEventListener('mouseleave', () => {
-        autoSlideInterval = setInterval(nextSlide, 5000);
-    });
-    */
+    // Создаем экземпляры слайдеров
+    new Slider('slider-woman');
+    new Slider('slider-man');
 });
