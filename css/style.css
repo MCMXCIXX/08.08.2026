@@ -7615,8 +7615,7 @@ sub {
   height: 100vh;
 }
 
-/* Стили, имитирующие элегантность оригинала */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+
 
 .timeline-wrapper {
   width: 100%;
@@ -7627,7 +7626,7 @@ sub {
   position: relative;
   /* Имитация вертикальной разделительной линии */
   border-left: 1px solid rgba(255, 255, 255, 0.5);
-  padding-left: 40px;
+  /* padding-left: 40px; */
 }
 
 .timeline-item {
@@ -7701,12 +7700,11 @@ sub {
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
   .timeline-wrapper {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     border-left: none;
   }
 
   .timeline-item {
-    padding-left: 40px; /* Иконка будет выглядеть как маркер */
     margin-bottom: 25px;
   }
 
@@ -7730,6 +7728,7 @@ sub {
 
 .overlay {
   background-image: url(../images/start-bg.jpeg);
+  background-color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
