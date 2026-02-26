@@ -3563,6 +3563,9 @@
 #rec737275404 .t396__artboard {
   height: 550px;
   background-color: #ffffff;
+  background-image: url(../images/5.jpg);
+  background-position: center top;
+  background-size: cover;
 }
 
 #rec737275404 .t396__filter {
@@ -7591,13 +7594,7 @@ sub {
   text-transform: uppercase;
   border-radius: 35px;
 }
-.overlay__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  text-align: center;
-}
+
 .audio {
   width: 1px;
   height: 1px;
@@ -7618,6 +7615,7 @@ sub {
 
 
 .timeline-wrapper {
+  font-family: "NEWFONTS", Arial, sans-serif;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -7627,6 +7625,7 @@ sub {
   /* Имитация вертикальной разделительной линии */
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   /* padding-left: 40px; */
+  font-weight: 500;
 }
 
 .timeline-item {
@@ -7732,6 +7731,20 @@ sub {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  font-family: "NEWFONTS", Arial, sans-serif;
+  font-weight: 500;
+}
+.overlay__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  text-align: center;
+}
+
+.overlay__inner h1, .overlay__inner h2, .overlay__inner h3, .overlay__button, .text-dark {
+  font-weight: 500 !important;
+    font-family: "NEWFONTS", Arial, sans-serif !important;
 }
 
 .player-wrapper {
